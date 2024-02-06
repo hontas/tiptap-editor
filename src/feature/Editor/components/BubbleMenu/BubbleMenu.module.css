@@ -1,0 +1,62 @@
+.container {
+  background: var(--tiptap-menu-background);
+  border-radius: var(--tiptap-menu-border-radius);
+  border: 1px solid var(--tiptap-menu-border-color);
+  box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.1);
+  display: flex;
+  height: 40px;
+}
+
+.button {
+  height: 40px;
+  min-width: 40px;
+}
+
+.container > .button {
+  &:first-child {
+    border-top-left-radius: var(--tiptap-menu-border-radius);
+    border-bottom-left-radius: var(--tiptap-menu-border-radius);
+  }
+  &:last-child {
+    border-top-right-radius: var(--tiptap-menu-border-radius);
+    border-bottom-right-radius: var(--tiptap-menu-border-radius);
+  }
+}
+
+.divider {
+  width: 1px;
+  align-self: stretch;
+  background: var(--tiptap-menu-divider-color, #F3F3F7);
+}
+
+/* Dropdown */
+
+.dropdownContainer {
+  position: relative;
+
+  > .button {
+    gap: 6px;
+  }
+}
+
+.dropdown {
+  /* composes: container; */
+  background: var(--tiptap-menu-background);
+  border-radius: var(--tiptap-menu-border-radius);
+  box-shadow: var(--tiptap-menu-shadow);
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  height: fit-content;
+  width: fit-content;
+  min-width: 250px;
+  max-height: 300px;
+  overflow: auto;
+
+  > .button {
+    text-align: left;
+    width: 100%;
+    justify-content: flex-start;
+  }
+}

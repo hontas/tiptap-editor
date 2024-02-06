@@ -1,0 +1,19 @@
+:root {
+  --tiptap-menu-background: white;
+  --tiptap-menu-background-gray: #F3F3F7;
+  --tiptap-menu-border-color: #e3e5e9;
+  --tiptap-menu-border-radius: 16px;
+  --tiptap-menu-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.1);
+  --tiptap-menu-shadow-high: 0px 12px 24px 0px rgba(0, 0, 0, 0.10);
+
+  --tiptap-menu-border-radius-s: 4px;
+  --tiptap-menu-border-radius-m: 8px;
+  --tiptap-menu-border-radius-l: 16px;
+}
+
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --tiptap-menu-background: #333;
+    --tiptap-menu-border-color: #444;
+  }
+} */

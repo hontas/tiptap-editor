@@ -1,0 +1,22 @@
+.codeBlock {
+  position: relative;
+
+  & select {
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+  }
+}
+
+/* Code & Code block styles */
+
+.codeBlock pre  {
+  background: var(--tiptap-menu-background-gray);
+  border: 1px solid var(--tiptap-menu-border-color);
+  border-radius: var(--tiptap-menu-border-radius-m);
+  font-size: small;
+  line-height: 1.4;
+  margin: 16px 0;
+  overflow-x: auto;
+  padding: 8px 16px;
+}
