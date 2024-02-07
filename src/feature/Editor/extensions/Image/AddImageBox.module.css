@@ -1,0 +1,37 @@
+.addImageBox {
+  border-radius: var(--corner-radius-m);
+  background: var(--colors-backgrounds-default);
+  box-shadow: var(--shadow-high);
+}
+
+.addImageBoxHeader {
+  align-items: center;
+  border-bottom: 1px solid var(--colors-borders-subtle-inline);
+  color: var(--colors-text-neutral);
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  padding: 12px var(--space-200);
+}
+
+.closeBtn {
+  width: 24px;
+  height: 24px;
+  margin: -10px;
+  font-size: 0.875em;
+}
+
+.addImageBoxRow {
+  padding: var(--space-200);
+  &:not(:last-child) {
+    border-bottom: 1px solid var(--colors-borders-subtle-inline);
+  }
+}
+
+.addImageInput {
+  border-radius: var(--corner-radius-s);
+  border: 1px solid var(--colors-borders-default);
+  padding: var(--space-200);
+  width: 100%;
+  outline: none;
+}

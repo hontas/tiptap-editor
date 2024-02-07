@@ -116,3 +116,37 @@ export const IconChevronDown = () => (
 );
 
 // export const TextIcon = () => ()
+
+export const IconPen = () => (
+  <svg
+    width="16"
+    height="20"
+    viewBox="0 0 16 20"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M9.8 1.30174L0 13.9599V19.9557L5.49623 18.2646L15.39 5.5148C16.3941 4.17626 16.1255 2.29585 14.8 1.30174L14 0.701739C12.6745 -0.292373 10.7941 -0.0237444 9.8 1.30174ZM13.6 2.90174L13.6957 2.98324C14.0531 3.32845 14.1059 3.8939 13.8 4.30174L12.8361 5.5436L10.5071 3.6552L11.3907 2.51391C11.7314 2.05991 12.3582 1.97037 12.8 2.30174L13.6 2.90174ZM9.28234 5.23699L1.999 14.6437V17.2477L4.302 16.5387L11.6095 7.1239L9.28234 5.23699Z"
+      fill="currentColor"
+    />
+  </svg>
+);
+
+export const IconTrash = () => (
+  <svg
+    height="20"
+    width="20"
+    viewBox="0 0 20 20"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <g fill="none" fillRule="evenodd" transform="translate(4, 4) scale(1)">
+      <path
+        d="M8.998 2H12v2h-1v5c0 1.654-1.346 3-3 3H4c-1.654 0-3-1.346-3-3V4H0V2h3.019l.432-.88A2 2 0 0 1 5.247 0h1.516a2 2 0 0 1 1.79 1.107L8.997 2ZM8 10c.551 0 1-.449 1-1V4.012H3V9c0 .551.449 1 1 1h4Z"
+        fill="currentColor"
+      />
+    </g>
+  </svg>
+);
