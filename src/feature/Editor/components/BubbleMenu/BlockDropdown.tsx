@@ -28,75 +28,64 @@ export const BlockDropdown = <E extends Editor>({
   editor,
 }: BlockDropdownProps<E>) => {
   const [showDropdown, setShowDropdown] = useState(false);
+  const isTable = editor.isActive("table");
 
   return (
     <div className={styles.dropdownContainer}>
-      <>
+      {!isTable && (
         <Button onClick={() => setShowDropdown((prev) => !prev)}>
           <span>{getNameFromNode(editor.state.selection.$anchor.parent)}</span>
           <IconChevronDown />
         </Button>
-        {showDropdown && (
-          <div className={styles.dropdown}>
-            <Button
-              onClick={() => editor.chain().focus().setParagraph().run()}
-              className={editor.isActive("paragraph") ? "is-active" : ""}
-            >
-              Text
-            </Button>
-            <Button
-              onClick={() =>
-                editor.chain().focus().toggleHeading({ level: 2 }).run()
-              }
-              className={
-                editor.isActive("heading", { level: 2 }) ? "is-active" : ""
-              }
-            >
-              Heading
-            </Button>
-            <Button
-              onClick={() =>
-                editor.chain().focus().toggleHeading({ level: 3 }).run()
-              }
-              className={
-                editor.isActive("heading", { level: 3 }) ? "is-active" : ""
-              }
-            >
-              Subheading
-            </Button>
-            <Button
-              onClick={() => editor.chain().focus().toggleBulletList().run()}
-              className={editor.isActive("bulletList") ? "is-active" : ""}
-            >
-              Bulleted list
-            </Button>
-            <Button
-              onClick={() => editor.chain().focus().toggleOrderedList().run()}
-              className={editor.isActive("orderedList") ? "is-active" : ""}
-            >
-              Numbered list
-            </Button>
-            <Button
-              onClick={() =>
-                editor.commands.insertTable({
-                  rows: 3,
-                  cols: 3,
-                  withHeaderRow: true,
-                })
-              }
-              className={editor.isActive("table") ? "is-active" : ""}
-            >
-              Table
-            </Button>
-            <Button
-              onClick={() => editor.chain().focus().toggleCodeBlock().run()}
-              className={editor.isActive("codeBlock") ? "is-active" : ""}
-            >
-              Code block
-            </Button>
-          </div>
-        )}
-      </>
+      )}
+      {showDropdown && (
+        <div className={styles.dropdown}>
+          <Button
+            onClick={() => editor.chain().focus().setParagraph().run()}
+            className={editor.isActive("paragraph") ? "is-active" : ""}
+          >
+            Text
+          </Button>
+          <Button
+            onClick={() =>
+              editor.chain().focus().toggleHeading({ level: 2 }).run()
+            }
+            className={
+              editor.isActive("heading", { level: 2 }) ? "is-active" : ""
+            }
+          >
+            Heading
+          </Button>
+          <Button
+            onClick={() =>
+              editor.chain().focus().toggleHeading({ level: 3 }).run()
+            }
+            className={
+              editor.isActive("heading", { level: 3 }) ? "is-active" : ""
+            }
+          >
+            Subheading
+          </Button>
+          <Button
+            onClick={() => editor.chain().focus().toggleBulletList().run()}
+            className={editor.isActive("bulletList") ? "is-active" : ""}
+          >
+            Bulleted list
+          </Button>
+          <Button
+            onClick={() => editor.chain().focus().toggleOrderedList().run()}
+            className={editor.isActive("orderedList") ? "is-active" : ""}
+          >
+            Numbered list
+          </Button>
+          <Button
+            onClick={() => editor.chain().focus().toggleCodeBlock().run()}
+            className={editor.isActive("codeBlock") ? "is-active" : ""}
+          >
+            Code block
+          </Button>
+        </div>
+      )}
     </div>
   );
 };
