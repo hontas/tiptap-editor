@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import "./App.css";
 import { Editor } from "./feature/Editor";
 import { htmlToMarkdown } from "./utils/htmlToMarkdown";
+import { markdownToHtml } from "./utils/markdownToHtml";
+import { ErrorBoundary } from "./components/ErrorBoundary";
 
 const STORAGE_KEYS = {
   html: "tiptap-html",
@@ -23,53 +25,62 @@ function App() {
 
   useEffect(() => {
     const savedHtml = getItem(STORAGE_KEYS.html);
-    if (savedHtml) {
-      console.log("savedHtml", savedHtml);
-      setHtml(savedHtml);
-    }
     const savedMd = getItem(STORAGE_KEYS.md);
+
+    if (savedHtml) setHtml(savedHtml);
     if (savedMd) {
-      setMarkdown(savedMd);
+      markdownToHtml(savedMd).then((vFile) => {
+        setMarkdown(vFile.toString());
+      });
     }
   }, []);
 
   return (
     <div className="App">
       <div>
-        <Editor
-          editable={isEditMode}
-          content={html}
-          onUpdate={(html) => {
-            setItem(STORAGE_KEYS.html, html);
-            if (textareaMdOutputRef.current) {
-              textareaMdOutputRef.current.value = htmlToMarkdown(html);
-            }
-          }}
-        />
         <label>
-          output markdown
-          <textarea
-            ref={textareaMdOutputRef}
-            className="markdown-output"
-            readOnly
-            rows={10}
+          <input
+            type="checkbox"
+            checked={isEditMode}
+            onChange={() => setEditMode((prev) => !prev)}
           />
+          editable
         </label>
-      </div>
-      <div>
-        <label>
-          Markdown to HTML
-          <textarea
-            className="markdown-input"
-            value={markdown}
-            rows={10}
-            onChange={(e) => {
-              setMarkdown(e.target.value);
-              setItem(STORAGE_KEYS.md, e.target.value);
+        <ErrorBoundary name={"editable Editor"}>
+          <Editor
+            editable={isEditMode}
+            content={html}
+            onUpdate={(html) => {
+              console.log("editable editor update", html);
+              setItem(STORAGE_KEYS.html, html);
+              if (textareaMdOutputRef.current) {
+                textareaMdOutputRef.current.value = htmlToMarkdown(html);
+              }
             }}
           />
-        </label>
-        <Editor editable={false} content={markdown} />
+        </ErrorBoundary>
+        <h3>Output markdown</h3>
+        <textarea
+          ref={textareaMdOutputRef}
+          className="markdown-output"
+          readOnly
+          rows={10}
+        />
+      </div>
+      <div>
+        <textarea
+          className="markdown-input"
+          value={markdown}
+          rows={10}
+          onChange={(e) => {
+            setMarkdown(e.target.value);
+            setItem(STORAGE_KEYS.md, e.target.value);
+          }}
+        />
+        <h3>Markdown to HTML</h3>
+        <ErrorBoundary name={"uneditable Editor"}>
+          <Editor editable={false} content={markdown} />
+        </ErrorBoundary>
       </div>
     </div>
   );
