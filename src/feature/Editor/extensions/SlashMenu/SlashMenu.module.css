@@ -1,9 +1,9 @@
 .items {
   display: flex;
   flex-direction: column;
-  background: var(--tiptap-menu-background);
-  box-shadow: var(--tiptap-menu-shadow-high);
-  border-radius: var(--tiptap-menu-border-radius-l);
+  background: var(--colors-backgrounds-default);
+  box-shadow: var(--shadow-high);
+  border-radius: var(--corner-radius-m);
 }
 
 .item {
@@ -13,32 +13,37 @@
 }
 
 .item:first-of-type {
-  border-top-left-radius: var(--tiptap-menu-border-radius-l);
-  border-top-right-radius: var(--tiptap-menu-border-radius-l);
+  border-top-left-radius: var(--corner-radius-m);
+  border-top-right-radius: var(--corner-radius-m);
 }
 .item:last-of-type {
-  border-bottom-left-radius: var(--tiptap-menu-border-radius-l);
-  border-bottom-right-radius: var(--tiptap-menu-border-radius-l);
+  border-bottom-left-radius: var(--corner-radius-m);
+  border-bottom-right-radius: var(--corner-radius-m);
 }
 
 .item:not(:last-of-type) {
-  border-bottom: 1px solid var(--tiptap-menu-border-color);
+  border-bottom: 1px solid var(--colors-borders-subtle-floating);
 }
 
 .itemSelected {
-  background: var(--tiptap-menu-background-gray);
+  background: var(--colors-backgrounds-subtle-inline);
 }
 
 .icon {
   width: 50px;
   height: 50px;
-  background: lightgray;
-  border-radius: var(--tiptap-menu-border-radius-m);
+  background: var(--colors-backgrounds-default);
+  border-radius: var(--corner-radius-s);
+  border: 1px solid var(--colors-borders-subtle-inline);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .text {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  text-align: left;
   justify-content: center;
   line-height: 1.3;
 }
@@ -51,4 +56,6 @@
 .shortcut {
   font-size: x-small;
   font-weight: 400;
+  margin-left: auto;
+  flex-shrink: 0;
 }

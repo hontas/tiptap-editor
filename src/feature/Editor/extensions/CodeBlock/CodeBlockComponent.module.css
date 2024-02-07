@@ -5,10 +5,10 @@
 /* Code & Code block styles */
 
 .codeBlock pre {
-  background: var(--tiptap-menu-background-gray);
-  border: 1px solid var(--tiptap-menu-border-color);
-  border-radius: var(--tiptap-menu-border-radius-m);
-  color: var(--colors-text-neutral);
+  background: var(--colors-backgrounds-subtle-inline);
+  border: 1px solid var(--colors-borders-subtle-floating);
+  border-radius: var(--corner-radius-s);
+  color: var(--colors-text-neutral-on-background);
   font-size: small;
   line-height: 1.4;
   margin: 16px 0;
@@ -16,7 +16,7 @@
   padding: 16px;
 }
 
-.codeBlock :global(.ProseMirror-trailingBreak) {
+.codeBlock :global(.ProseMirror-trailingBreak:not(:first-child)) {
   display: none;
 }
 
