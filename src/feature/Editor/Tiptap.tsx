@@ -9,6 +9,7 @@ import {
 import { BubbleMenuContent } from "./components/BubbleMenu";
 import extensions from "./extensions";
 import "./Tiptap.css";
+import { TableMenu } from "./components/TableMenu";
 
 interface EditorProps {
   editable: boolean;
@@ -58,6 +59,7 @@ export const Tiptap = ({ editable, content, onUpdate }: EditorProps) => {
       <BubbleMenu editor={editor}>
         <BubbleMenuContent editor={editor} />
       </BubbleMenu>
+      <TableMenu editor={editor} />
     </>
   );
 };
