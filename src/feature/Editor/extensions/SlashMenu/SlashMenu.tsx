@@ -64,7 +64,8 @@ export const SlashMenu = forwardRef<SlashMenuRef, SlashMenuProps>(
 
         return false;
       },
-      [enterHandler],
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      [],
     );
 
     useImperativeHandle(
