@@ -5,17 +5,25 @@ body {
 .App {
   background-color: white;
   padding: 1em;
-  display: flex;
-  gap: 8px;
 }
 
-.App > div {
+h1,
+h2 {
+  margin-top: 0;
+}
+
+.columns {
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+}
+
+.columns > div {
   flex: 1;
 }
 
-.App > label {
-  margin-top: 1em;
-  display: block;
+.tiptap {
+  min-height: 300px;
 }
 
 textarea.markdown-output,
@@ -25,5 +33,10 @@ textarea.markdown-input {
   font-size: small;
   line-height: 1.3;
   font-family: monospace;
-  margin-top: 0.5em;
+}
+
+@media (min-width: 768px) {
+  .columns {
+    flex-direction: row;
+  }
 }

@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useRef } from "react";
 import {
-  FloatingMenu,
   BubbleMenu,
   EditorEvents,
   useEditor,
@@ -55,7 +54,7 @@ export const Tiptap = ({ editable, content, onUpdate }: EditorProps) => {
     <>
       <EditorContent editor={editor} />
 
-      <FloatingMenu editor={editor}>This is the floating menu</FloatingMenu>
+      {/* <FloatingMenu editor={editor}>This is the floating menu</FloatingMenu> */}
       <BubbleMenu editor={editor}>
         <BubbleMenuContent editor={editor} />
       </BubbleMenu>
