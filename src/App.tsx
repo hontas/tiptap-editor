@@ -51,10 +51,11 @@ function App() {
             editable={isEditMode}
             content={html}
             onUpdate={(html) => {
-              console.log("editable editor update", html);
-              setItem(STORAGE_KEYS.html, html);
-              if (textareaMdOutputRef.current) {
-                textareaMdOutputRef.current.value = htmlToMarkdown(html);
+              if (html !== "<p></p>") {
+                setItem(STORAGE_KEYS.html, html);
+                if (textareaMdOutputRef.current) {
+                  textareaMdOutputRef.current.value = htmlToMarkdown(html);
+                }
               }
             }}
           />
