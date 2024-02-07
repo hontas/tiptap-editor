@@ -7,16 +7,15 @@
   height: var(--space-500);
 }
 
-.container > * {
-  &:first-child {
-    border-top-left-radius: var(--corner-radius-m);
-    border-bottom-left-radius: var(--corner-radius-m);
-    padding-left: var(--space-200);
-  }
-  &:last-child {
-    border-top-right-radius: var(--corner-radius-m);
-    border-bottom-right-radius: var(--corner-radius-m);
-  }
+.container > *:first-child > button,
+.container > button:first-child {
+  border-top-left-radius: var(--corner-radius-m);
+  border-bottom-left-radius: var(--corner-radius-m);
+  padding-left: var(--space-200);
+}
+.container > button:last-child {
+  border-top-right-radius: var(--corner-radius-m);
+  border-bottom-right-radius: var(--corner-radius-m);
 }
 
 .divider {
