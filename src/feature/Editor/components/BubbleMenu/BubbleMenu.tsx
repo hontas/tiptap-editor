@@ -1,4 +1,5 @@
 import { Editor } from "@tiptap/react";
+import { Node } from "@tiptap/pm/model";
 
 import {
   IconBold,
@@ -8,10 +9,10 @@ import {
   IconStrike,
   IconUnderline,
 } from "../icons";
-import { BlockDropdown } from "./BlockDropdown";
 import { Button, ButtonRound } from "../Button";
 import { Toolbar, ToolbarDivider } from "../Toolbar";
 import { keyboardShortcuts } from "../../extensions";
+import { MenuDropdown } from "../MenuDropdown";
 
 interface BubbleMenuContentProps {
   editor: Editor;
@@ -26,7 +27,47 @@ export const BubbleMenuContent = ({ editor }: BubbleMenuContentProps) => {
     <Toolbar>
       {!editor.isActive("table") && (
         <>
-          <BlockDropdown editor={editor} />
+          <MenuDropdown
+            title={getNameFromNode(editor.state.selection.$anchor.parent)}
+            options={[
+              {
+                onClick: () => editor.chain().focus().setParagraph().run(),
+                className: editor.isActive("paragraph") ? "is-active" : "",
+                children: "Text",
+              },
+              {
+                onClick: () =>
+                  editor.chain().focus().toggleHeading({ level: 1 }).run(),
+                className: editor.isActive("heading", { level: 1 })
+                  ? "is-active"
+                  : "",
+                children: "Heading",
+              },
+              {
+                onClick: () =>
+                  editor.chain().focus().toggleHeading({ level: 2 }).run(),
+                className: editor.isActive("heading", { level: 2 })
+                  ? "is-active"
+                  : "",
+                children: "Subheading",
+              },
+              {
+                onClick: () => editor.chain().focus().toggleBulletList().run(),
+                className: editor.isActive("bulletList") ? "is-active" : "",
+                children: "Bulleted list",
+              },
+              {
+                onClick: () => editor.chain().focus().toggleOrderedList().run(),
+                className: editor.isActive("orderedList") ? "is-active" : "",
+                children: "Numbered list",
+              },
+              {
+                onClick: () => editor.chain().focus().toggleCodeBlock().run(),
+                className: editor.isActive("codeBlock") ? "is-active" : "",
+                children: "Code block",
+              },
+            ]}
+          />
           <ToolbarDivider />
         </>
       )}
@@ -82,3 +123,18 @@ export const BubbleMenuContent = ({ editor }: BubbleMenuContentProps) => {
     </Toolbar>
   );
 };
+
+function getNameFromNode(node: Node) {
+  if (node.type.name === "paragraph") {
+    return "Text";
+  }
+  if (node.type.name === "heading") {
+    return node.attrs.level === 2
+      ? "Heading"
+      : node.attrs.level === 3
+        ? "Subheading"
+        : `Heading ${node.attrs.level}`;
+  }
+
+  return node.type.name;
+}

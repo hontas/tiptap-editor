@@ -1,6 +1,6 @@
 import styles from "./Button.module.css";
 
-type ButtonProps = React.PropsWithChildren<{
+export type ButtonProps = React.PropsWithChildren<{
   onClick: () => void;
   disabled?: boolean;
   className?: string;
