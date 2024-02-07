@@ -1,9 +1,5 @@
 import { useRef } from "react";
-import {
-  NodeViewContent,
-  NodeViewRendererProps,
-  NodeViewWrapper,
-} from "@tiptap/react";
+import { NodeViewContent, NodeViewProps, NodeViewWrapper } from "@tiptap/react";
 
 import styles from "./CodeBlockComponent.module.css";
 
@@ -13,7 +9,8 @@ export const CodeBlockComponent = ({
   },
   extension,
   editor,
-}: NodeViewRendererProps) => {
+  updateAttributes,
+}: NodeViewProps) => {
   const selectRef = useRef<HTMLSelectElement>(null);
 
   return (
@@ -21,8 +18,9 @@ export const CodeBlockComponent = ({
       <pre>
         <NodeViewContent as="code" />
       </pre>
-      <div className={styles.select}>
+      <div className={styles.select} contentEditable={false}>
         <select
+          tabIndex={-1}
           style={{
             width: getCharacterWidth(
               selectRef.current?.value || defaultLanguage,
@@ -32,11 +30,7 @@ export const CodeBlockComponent = ({
           contentEditable={false}
           defaultValue={defaultLanguage}
           onChange={(event) =>
-            editor
-              .chain()
-              .focus()
-              .updateAttributes("codeBlock", { language: event.target.value })
-              .run()
+            updateAttributes({ language: event.target.value })
           }
         >
           <option value="null">auto</option>
