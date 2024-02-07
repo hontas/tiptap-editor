@@ -1,6 +1,6 @@
 import { Editor } from "@tiptap/react";
 import { useState } from "react";
-import styles from "./BubbleMenu.module.css";
+import styles from "./BlockDropdown.module.css";
 import { IconChevronDown } from "../icons";
 import { Button } from "../Button";
 import { Node } from "@tiptap/pm/model";

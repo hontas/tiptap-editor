@@ -1,0 +1,29 @@
+.dropdownContainer {
+  position: relative;
+
+  &:hover {
+    background: var(--colors-backgrounds-subtle-inline);
+  }
+}
+
+.dropdown {
+  /* composes: container; */
+  background: var(--colors-backgrounds-default);
+  border-radius: var(--corner-radius-m);
+  box-shadow: var(--shadow-mid);
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  height: fit-content;
+  width: fit-content;
+  min-width: 250px;
+  max-height: 300px;
+  overflow: auto;
+
+  > button {
+    text-align: left;
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
