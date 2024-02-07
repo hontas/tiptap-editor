@@ -1,15 +1,8 @@
-import React, {
-  useCallback,
-  useState,
-  forwardRef,
-  useImperativeHandle,
-  useEffect,
-} from "react";
+import { useCallback, useState, forwardRef, useImperativeHandle } from "react";
 import { SuggestionProps, SlashMenuItem } from "./types";
 import styles from "./SlashMenu.module.css";
 import { Editor } from "@tiptap/react";
 import { Button } from "../../components/Button";
-import { formatKeyboardShortcut } from "../../../../utils";
 
 interface SlashMenuProps {
   editor: Editor;
@@ -25,17 +18,6 @@ export const SlashMenu = forwardRef<SlashMenuRef, SlashMenuProps>(
   function SlashMenu({ editor, items, command }, ref) {
     const [selectedIndex, setSelectedIndex] = useState(0);
 
-    useEffect(() => {
-      console.log("items updated");
-    }, [items]);
-    //   componentDidUpdate(oldProps) {
-    //     if (this.props.items !== oldProps.items) {
-    //       this.setState({
-    //         selectedIndex: 0
-    //       });
-    //     }
-    //   }
-
     const selectItem = useCallback(
       (index: number) => {
         const item = items[index];
@@ -44,7 +26,7 @@ export const SlashMenu = forwardRef<SlashMenuRef, SlashMenuProps>(
           command(item);
         }
       },
-      [items],
+      [command, items],
     );
 
     const upHandler = () => {
@@ -60,8 +42,6 @@ export const SlashMenu = forwardRef<SlashMenuRef, SlashMenuProps>(
     };
 
     const enterHandler = () => {
-      console.log("enterHandler", selectedIndex);
-
       selectItem(selectedIndex);
     };
 
@@ -115,7 +95,7 @@ export const SlashMenu = forwardRef<SlashMenuRef, SlashMenuProps>(
               <span className={styles.description}>{item.description}</span>
             </div>
             <div className={styles.shortcut}>
-              {item.shortcut && formatKeyboardShortcut(item.shortcut)}
+              {item.shortcut && item.shortcut}
             </div>
           </Button>
         ))}
